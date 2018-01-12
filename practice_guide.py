@@ -30,7 +30,7 @@ def practice (inquisitor, nr_words):
 			return
 		
 		# If answer was correct, add to score
-		if len(answer) > 0 and len(answer) < len(target) and match(answer, target):
+		if len(answer) > 0 and len(answer) <= len(target) and match(answer, target):
 			correct += 1
 			confirm = input("Correct answer ")		
 			
@@ -101,9 +101,6 @@ def match_recur(answer, index_a, target, index_t):
 	# Final, nothing happens base case
 	else:
 		return match_recur(answer, index_a+1, target, index_t+1)
-
-
-
 
 
 
