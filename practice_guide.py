@@ -9,7 +9,7 @@ from inquisitor import *
 '''
 def practice (inquisitor, nr_words):
 	
-	print ("---------------------------------------------------")
+	print ("\n---------------------------------------------------")
 	print ("Press (enter) to continue after checking the answer")
 	print ("Type (q) to stop practicing at any time")
 	print ("---------------------------------------------------\n")
@@ -26,7 +26,7 @@ def practice (inquisitor, nr_words):
 		# Get user answer (and check is termination command)
 		answer = prompt('A: ').strip()
 		if (answer.upper() == "Q"):
-			clean_window(7)
+			clean_window(8)
 			return
 		
 		# If answer was correct, add to score
@@ -40,7 +40,7 @@ def practice (inquisitor, nr_words):
 		
 		# As always check if termination command was issued
 		if confirm.upper() == "Q":
-			clean_window(8)
+			clean_window(9)
 			return
 		
 		# Clean window for next question
@@ -48,7 +48,7 @@ def practice (inquisitor, nr_words):
 	
 	# Provide overview of performance then ask if should repeat
 	repeat = prompt("This completes the practice.\nYou answered {0} out of {1} correctly. Repeat? (Y/n) ".format(correct, nr_words)).strip()
-	clean_window(7)
+	clean_window(8)
 	if (repeat.upper() == "Y"):
 		practice(inquisitor, nr_words)
 	else:
