@@ -30,7 +30,7 @@ def practice (inquisitor, nr_words):
 			return
 		
 		# If answer was correct, add to score
-		if len(answer) > 0 and match(answer, target):
+		if len(answer) > 0 and len(answer) < len(target) and match(answer, target):
 			correct += 1
 			confirm = input("Correct answer ")		
 			
@@ -69,6 +69,9 @@ def match_recur(answer, index_a, target, index_t):
 	# Case: both reached the end without error (so match),
 	# or one reached the end and the other did not (no match),
 	# excepting when the target still had a bracket left to clear
+	
+	#print(answer[index_a], target[index_t])
+	
 	if (index_a >= len(answer)) and (index_t >= len(target)):
 		return True
 	
@@ -84,10 +87,12 @@ def match_recur(answer, index_a, target, index_t):
 		return (match_recur(answer, index_a, target, index_t+incr) or
 				match_recur(answer, index_a, target, index_t+1))
 
-	
 	elif (target[index_t] == ')'):
 		return match_recur(answer, index_a, target, index_t+1)
 
+
+	elif (index_a >= len(answer)):
+		return False
 
 	# Error since they differ at index
 	elif answer[index_a] != target[index_t]:
@@ -96,10 +101,6 @@ def match_recur(answer, index_a, target, index_t):
 	# Final, nothing happens base case
 	else:
 		return match_recur(answer, index_a+1, target, index_t+1)
-
-
-
-
 
 
 
